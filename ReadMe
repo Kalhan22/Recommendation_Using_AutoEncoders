@@ -1,0 +1,35 @@
+ReadMe
+
+Step I : Gather All Data
+
+1) Download Movie Lens Dataset 100k
+2) Push all the Data into a MySQL Database with the same table names
+
+Step II : Data Preparation
+1) Run Push_Ratings_To_CSV.sql. If the insert does not work, export the data using MySQL Inbuilt export option.
+
+User Based CF Using Auto Encoders:
+
+	2) Run Data_Prep_1.R to create matrix_data_tranposed table in Database 'nn'
+	3) Run Get_Similar_Users.ipynb to get the nearest users for a given user
+	4) Run the MySQL_User_Based_CF.sql. This script creates the data set in the format required.
+	5) Run the Convert_To_Train_Test.ipynb which creates the dataset into train and test.
+	6) Run the below files and note down the results for both classification and regression
+			AutoEncoder_Rating_Prediction_Classification.ipynb 
+			AutoEncoder_Rating_Prediction_Regression.ipynb
+	7) Run the Comparison_Classifier_User_Based.R to compare the classification accuracy and regression mse with Autoencoders
+
+Item Based CF Using Auto Encoders:
+	8) Run MySQL_Content_Based_CF.sql and export the data into full_data_item_based_655.csv
+	9) Run Convert_To_Train_Test_Item.ipynb to convert into train and test
+	10) Run the below files and note down the results for both classification and regression
+			AutoEncoder_Rating_Prediction_Classification_Item.ipynb 
+			AutoEncoder_Rating_Prediction_Regression._Item.ipynb
+	11) Run the Comparison_Classifier_Item_Based.R to compare the classification accuracy and regression mse with Autoencoders
+
+Combine Data from Two Models to Compare the Results
+	12) Run My_SQL_User_Item_Combined_CF
+	13) Run the files
+			AutoEncoder_Rating_Prediction_Classification_Combined.ipynb 
+			AutoEncoder_Rating_Prediction_Regression._Combined.ipynb
+	14)Run the Comparison_Classifier_Combined.R to compare the classification accuracy and regression mse with Autoencoders
